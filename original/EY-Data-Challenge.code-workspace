@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"name": "EY-Data-Challenge",
+			"path": ".."
+		},
+		{
+			"name": "Jupyter Notebook Package 2",
+			"path": "../../Jupyter Notebook Package 2"
+		},
+		{
+			"name": "Snowflake Notebooks Package",
+			"path": "../../Snowflake Notebooks Package"
+		}
+	],
+	"settings": {}
+}
