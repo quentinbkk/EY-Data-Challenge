@@ -33,6 +33,10 @@ TIME_INVARIANT_COLS = [
     "sg_cec_0_5cm",   "sg_cec_5_15cm",
     "sg_clay_0_5cm",  "sg_clay_5_15cm",
     "sg_soc_0_5cm",   "sg_soc_5_15cm",
+    "sg_sand_0_5cm",  "sg_sand_5_15cm",
+    "sg_silt_0_5cm",  "sg_silt_5_15cm",
+    "sg_bdod_0_5cm",  "sg_bdod_5_15cm",
+    "sg_nitrogen_0_5cm", "sg_nitrogen_5_15cm",
     # Target-encoded macrostrat (added per-target at fit time)
     "macrostrat_te_Total Alkalinity",
     "macrostrat_te_Electrical Conductance",
@@ -40,7 +44,8 @@ TIME_INVARIANT_COLS = [
 
     # HydroRivers data
     "upland_skm",
-    "strahler_order"
+    "log_upland_skm",
+    "strahler_order",
 ]
 
 # Columns that vary within a site (will be decomposed into mean + deviation)

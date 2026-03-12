@@ -6,3 +6,4 @@ __pycache__/
 *.parquet
 Extraction/worldclim_rasters
 Extraction/hydrorivers_af
+Extraction/soilgrids_cache.parquet

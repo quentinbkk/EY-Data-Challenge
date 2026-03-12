@@ -57,6 +57,15 @@ LAYERS = [
     ("clay",  "5-15cm", 0.1),
     ("soc",   "0-5cm",  0.1),
     ("soc",   "5-15cm", 0.1),
+    # New layers
+    ("sand",  "0-5cm",  0.1),
+    ("sand",  "5-15cm", 0.1),
+    ("silt",  "0-5cm",  0.1),
+    ("silt",  "5-15cm", 0.1),
+    ("bdod",  "0-5cm",  0.01),   # bulk density: raw ×100 → cg/cm³, scale to g/cm³
+    ("bdod",  "5-15cm", 0.01),
+    ("nitrogen", "0-5cm",  0.01),  # raw ×100 → g/kg
+    ("nitrogen", "5-15cm", 0.01),
 ]
 
 TRAIN_WQ_CSV  = "../Data/water_quality_training_dataset.csv"
@@ -163,6 +172,17 @@ def main():
     sg_cols = [c for c in soil_df.columns if c.startswith("sg_")]
     print(f"\nExtracted {len(sg_cols)} SoilGrids columns:")
     print(soil_df[sg_cols].describe().round(2))
+
+    # Merge into training_merged.csv and validation_merged.csv
+    merge_cols = ["Latitude", "Longitude"] + sg_cols
+    for csv_path in ["../Data/training_merged.csv", "../Data/validation_merged.csv"]:
+        df = pd.read_csv(csv_path)
+        # Drop old sg_ cols to avoid duplicates on re-run
+        df = df.drop(columns=[c for c in df.columns if c.startswith("sg_")], errors="ignore")
+        df = df.merge(soil_df[merge_cols], on=["Latitude", "Longitude"], how="left")
+        df.to_csv(csv_path, index=False)
+        nan_count = df[sg_cols].isna().sum().sum()
+        print(f"  Merged into {csv_path}  (total NaN across sg cols: {nan_count})")
 
 
 if __name__ == "__main__":
