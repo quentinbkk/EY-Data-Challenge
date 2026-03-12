@@ -5,3 +5,4 @@ __pycache__/
 *.checkpoint.csv
 *.parquet
 Extraction/worldclim_rasters
+Extraction/hydrorivers_af

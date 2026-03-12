@@ -37,6 +37,10 @@ TIME_INVARIANT_COLS = [
     "macrostrat_te_Total Alkalinity",
     "macrostrat_te_Electrical Conductance",
     "macrostrat_te_Dissolved Reactive Phosphorus",
+
+    # HydroRivers data
+    "upland_skm",
+    "strahler_order"
 ]
 
 # Columns that vary within a site (will be decomposed into mean + deviation)
